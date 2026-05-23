@@ -1,0 +1,52 @@
+class Player(GameSprite):
+
+    def update_r(self):
+        keys = key.get_pressed()
+
+        # Move right paddle up
+        if keys[K_UP] and self.rect.y > 5:
+            self.rect.y -= self.speed
+
+        # Move right paddle down
+        if keys[K_DOWN] and self.rect.y < win_height - 80:
+            self.rect.y += self.speed
+
+    def update_l(self):
+        keys = key.get_pressed()
+
+        # Move left paddle up
+        if keys[K_w] and self.rect.y > 5:
+            self.rect.y -= self.speed
+
+        # Move left paddle down
+        if keys[K_s] and self.rect.y < win_height - 80:
+            self.rect.y += self.speed
+
+
+# Window size
+win_width = 700
+win_height = 500
+
+# Game window title
+display.set_caption("Ping Pong Game")
+
+# Create game window
+window = display.set_mode((win_width, win_height))
+
+# Load and resize background image
+background = transform.scale(
+    image.load("background.jpg"),
+    (win_width, win_height)
+)
+
+# Game settings
+game = True
+finish = False
+
+# FPS controller
+clock = time.Clock()
+FPS = 60
+
+while game: 
+    
+    
